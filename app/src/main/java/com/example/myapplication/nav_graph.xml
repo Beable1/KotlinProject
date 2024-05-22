@@ -1,0 +1,17 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainScreen">
+
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="com.example.myapplication.MainScreen"
+        android:label="fragment_main_screen"
+        tools:layout="@layout/fragment_main_screen" />
+
+    <fragment
+        android:id="@+id/kelimeEklemeScreen"
+        android:name="com.example.myapplication.KelimeEklemeScreen"
+        android:label="fragment_kelime_ekleme_screen"
+        tools:layout="@layout/fragment_kelime_ekleme_screen" />
+</navigation>
