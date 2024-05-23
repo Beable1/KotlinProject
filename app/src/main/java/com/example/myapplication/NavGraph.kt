@@ -40,7 +40,10 @@ fun SetupNavGraph(navController: NavHostController){
             FirstScreen(navController)
         }
         composable(route=Screen.Second.route){
-            SecondScreen(navController)
+                backStackEntry ->
+            val textFieldValue = backStackEntry.arguments?.getString("textFieldValue")?.toInt() ?: 10
+            SecondScreen(navController = navController, textFieldValue = textFieldValue)
+
         }
         composable(route=Screen.Third.route){
             ThirdScreen(navController)
