@@ -1,3 +1,5 @@
+**Kelime ezberleme uygulaması.**
+
 Kotlin ile yazılan bu program kullacının 6 tekrarlı öğrenme prensibi ile kendi girdiği kelimeleri ezberlemesini sağlar.
 
 Kullanıcı kayıt olduktan sonra mail doğrulaması yapması gerekmektedir.
