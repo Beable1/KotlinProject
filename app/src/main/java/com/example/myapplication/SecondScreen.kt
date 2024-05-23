@@ -2,6 +2,7 @@ package com.example.myapplication
 import android.Manifest
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.graphics.Paint.Align
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -78,7 +79,8 @@ import kotlin.properties.Delegates
 
 
 @Composable
-fun SecondScreen(navController: NavController){
+fun SecondScreen(navController: NavController, textFieldValue: Int){
+
     var insufficientDocument by remember{mutableStateOf(false)}
     var timestamp by remember { mutableStateOf("") }
     var answer by remember { mutableStateOf("") }
@@ -257,7 +259,9 @@ fun SecondScreen(navController: NavController){
     }
     else{
 
-    if (!insufficientDocument) {
+        Log.d("AAAAAAAA","soru id:$questionId")
+        Log.d("AAAAAAAA","value:$textFieldValue")
+    if ((!insufficientDocument)&&(questionId<=textFieldValue)) {
         Column (
             modifier = Modifier
                 .fillMaxSize()
@@ -452,7 +456,8 @@ fun SecondScreen(navController: NavController){
             }
         }
     }
-    }else{
+    }
+    if ((insufficientDocument)&&(questionId<= textFieldValue)){
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -484,15 +489,12 @@ fun SecondScreen(navController: NavController){
             }
         }
     }
+        if(questionId>textFieldValue){
+        QuestionLimitScreen()
+    }
     }
 }
 
-@Composable
-@Preview
-fun SecondScreenPreview(){
-    SecondScreen(navController = rememberNavController())
-
-}
 
 
 fun deleteDocument(db:FirebaseFirestore,currentUser:String,documentId: String){
@@ -517,4 +519,18 @@ fun LoadingScreen() {
     ) {
         CircularProgressIndicator(color = androidx.compose.material3.MaterialTheme.colorScheme.primaryContainer)
     }
+}
+
+@Composable
+fun QuestionLimitScreen() {
+    Box(modifier = Modifier.background(color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+            .background(color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer),
+        contentAlignment = Alignment.Center
+    ) {
+       Text(text = "Bugünkü soru limitine ulaştınız. Eğer soru limitini değiştirmek istiyorsanız, ana sayfadaki ayarlar menüsünden değiştirebilirsiniz.", color = androidx.compose.material3.MaterialTheme.colorScheme.primaryContainer, fontSize = 18.sp,modifier = Modifier.align(Alignment.Center) )
+    }}
 }
