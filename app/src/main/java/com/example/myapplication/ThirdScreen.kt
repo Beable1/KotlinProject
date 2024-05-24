@@ -142,12 +142,12 @@ fun WordItem(word: Word) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-
+            var CorrectInf=(word.correctCount.toFloat()/word.questionCount.toFloat())*100
             Text(text = "Kelime: ${word.englishWord}",color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)
             Spacer(modifier = Modifier.padding(5.dp))
-            Text(text = "Doğru Sayısı: ${word.correctCount}",color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)
+            Text(text = "Bilme Oranı: %${CorrectInf}",color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)
             Spacer(modifier = Modifier.padding(5.dp))
-            Text(text = "Yanlış Sayısı: ${word.questionCount-word.correctCount}",color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)
+            Text(text = "Toplam Sorulma: ${word.questionCount}",color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)
             Spacer(modifier = Modifier.padding(5.dp))
             Text(text = "Art Arda Bilme Sayısı: ${word.streak}",color = androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer)
 
